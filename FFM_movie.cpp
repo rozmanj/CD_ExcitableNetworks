@@ -549,7 +549,8 @@ int main(int argc, char *argv[])
 			if (cells_to_divide.size() != 0)
             {
                 //****************MOVIE********************************************
-                if (gini_repeats == 2) make_graph_files(cells, N_cells, p_i, p_t, p_r, p_d, cell_colors);
+                //uncomment to print all frames:
+                //if (gini_repeats == 2) make_graph_files(cells, N_cells, p_i, p_t, p_r, p_d, cell_colors);
         
 				//****************COMPONENTS********************************************
 	        	component_sizes = {};
@@ -615,6 +616,8 @@ int main(int argc, char *argv[])
         }
 
         //******************CHAMBER COMPLETE*************************************************
+        if (gini_repeats == 2) make_graph_files(cells, N_cells, p_i, p_t, p_r, p_d, cell_colors);
+
         if (total_val(component_sizes) != N_cells) {simulation_error += 1;}
         
         max_fractions.push_back(((double) max_val(component_sizes)) / (double) N_cells);
