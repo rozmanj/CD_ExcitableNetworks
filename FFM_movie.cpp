@@ -374,11 +374,11 @@ int main(int argc, char *argv[])
     std::vector<double> blue_fractions = {};
     double blue_count = 0;
 
-
+    int print_repeat = 2;
     //**********************************************************************
     //******************RUN*************************************************
     //**********************************************************************
-    for (int gini_repeats = 0; gini_repeats < 2200; gini_repeats ++ )
+    for (int gini_repeats = 0; gini_repeats < print_repeat + 1; gini_repeats ++ )
     {	
     	cells = {};
     	cell_colors = {};
@@ -420,8 +420,9 @@ int main(int argc, char *argv[])
         if (cells.size() != N_cells) {simulation_error += 1;}
 
         //****************MOVIE********************************************
-        if (gini_repeats == 2) make_graph_files(cells, N_cells, p_i, p_t, p_r, p_d, cell_colors);
-        
+        //uncomment to print all frames:
+        //if (gini_repeats == print_repeat) make_graph_files(cells, N_cells, p_i, p_t, p_r, p_d, cell_colors);
+
         //**********************************************************************
         //******************SIMULATION******************************************
         //**********************************************************************
@@ -548,11 +549,7 @@ int main(int argc, char *argv[])
 
 			if (cells_to_divide.size() != 0)
             {
-                //****************MOVIE********************************************
-                //uncomment to print all frames:
-                //if (gini_repeats == 2) make_graph_files(cells, N_cells, p_i, p_t, p_r, p_d, cell_colors);
-        
-				//****************COMPONENTS********************************************
+                //****************COMPONENTS********************************************
 	        	component_sizes = {};
 
 	        	cell_visited = {};
@@ -589,6 +586,10 @@ int main(int argc, char *argv[])
 	        		}
 	        	}
 
+                //****************MOVIE********************************************
+                //uncomment to print all frames:
+                //if (gini_repeats == print_repeat) make_graph_files(cells, N_cells, p_i, p_t, p_r, p_d, cell_colors);
+
 	        	//***************DIVERSITY MEASURES**************************************
 	        	if (N_cells < 1150)
                 {
@@ -616,7 +617,8 @@ int main(int argc, char *argv[])
         }
 
         //******************CHAMBER COMPLETE*************************************************
-        if (gini_repeats == 2) make_graph_files(cells, N_cells, p_i, p_t, p_r, p_d, cell_colors);
+        //uncomment to print only final frame:
+        if (gini_repeats == print_repeat) make_graph_files(cells, N_cells, p_i, p_t, p_r, p_d, cell_colors);
 
         if (total_val(component_sizes) != N_cells) {simulation_error += 1;}
         
