@@ -399,7 +399,7 @@ int main(int argc, char *argv[])
         {	
         	new_cell_network = {};
             cells_to_divide = {};
-            if (N_cells != cells.size()) {/*cout << "ERROR: N_cells mismatch: " << N_cells << " " << cells.size() << std::endl; */simulation_error += 1;}
+            if (N_cells != cells.size()) {simulation_error += 1;}
             
            //**********************************************************************
         	//******************MAKE UPDATED NETWORK********************************

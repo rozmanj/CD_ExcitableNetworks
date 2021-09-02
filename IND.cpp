@@ -312,7 +312,6 @@ int main(int argc, char *argv[])
     //**********************************************************************
     //******************RUN*************************************************
     //**********************************************************************
-    //for (int i = 1; i < 20; i ++ ) cout << distribution_uniform(generator_uniform) << endl;;
     for (int gini_repeats = 0; gini_repeats < 2200; gini_repeats ++ )
     {	
     	cells = {};
@@ -457,7 +456,7 @@ int main(int argc, char *argv[])
                             	found_other_link += 1;
                             }
                         }
-                        if (found_other_link != 1) {/*cout << "ERROR: links" << endl; */simulation_error += 1;}
+                        if (found_other_link != 1) {simulation_error += 1;}
                     }
                     else
                     {
@@ -564,7 +563,7 @@ int main(int argc, char *argv[])
         }
 
         //******************CHAMBER COMPLETE*************************************************
-        if (total_val(component_sizes) != N_cells) {/*std::cout << "ERROR: component sum" << std::endl; */simulation_error += 1;}
+        if (total_val(component_sizes) != N_cells) {simulation_error += 1;}
         
         max_fractions.push_back(((double) max_val(component_sizes)) / (double) N_cells);
         clone_count.push_back(component_sizes.size());
@@ -573,8 +572,8 @@ int main(int argc, char *argv[])
         blue_fractions.push_back(((double) total_val(cell_colors)) / (double) N_cells);
         blue_count = 0.;
         for (int i = 0; i < cell_colors.size(); i ++ ) {if (cell_colors[i] == 1) blue_count += 1;}
-        if (blue_count != total_val(cell_colors)) {/*std::cout << "ERROR: blue sum " << blue_count << std::endl; */simulation_error += 1;}
-        if (cell_colors.size() != N_cells) {/*std::cout << "ERROR: blue sum 2 " << cell_colors.size() << " " << N_cells << std::endl; */simulation_error += 1;}
+        if (blue_count != total_val(cell_colors)) {simulation_error += 1;}
+        if (cell_colors.size() != N_cells) {simulation_error += 1;}
         
         fast_fractions.push_back(((double) total_val(cell_fast)) / (double) N_cells);
         fin_times.push_back(time);
